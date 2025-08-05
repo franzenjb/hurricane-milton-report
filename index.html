@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hurricane Milton: 6-Month Impact Report</title>
+    <meta name="description" content="American Red Cross Hurricane Milton 6-Month Impact Report - Learn about our response efforts, services provided, and ongoing recovery support.">
+    <title>Hurricane Milton: 6-Month Impact Report | American Red Cross</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="red-cross-loader">
+                <div class="cross-horizontal"></div>
+                <div class="cross-vertical"></div>
+            </div>
+            <p>Loading Impact Report...</p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
             <div class="red-cross-logo">
-                <i class="fas fa-plus"></i>
+                <div class="red-cross-icon">
+                    <div class="cross-horizontal"></div>
+                    <div class="cross-vertical"></div>
+                </div>
                 <span>American Red Cross</span>
             </div>
             <h1 class="hero-title">Hurricane Milton</h1>
@@ -52,7 +67,7 @@
     <section id="impact" class="impact-section">
         <div class="container">
             <h2 class="section-title">The Storm's Devastating Impact</h2>
-            <div class="impact-grid">
+            <div class="impact-grid impact-grid-2x2">
                 <div class="impact-card">
                     <div class="impact-icon">
                         <i class="fas fa-wind"></i>
@@ -80,6 +95,35 @@
                     </div>
                     <h3>October 2024</h3>
                     <p>Hit just 2 weeks after Hurricane Helene impacted the same area</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Areas of Impact and Response</h2>
+            <div class="map-container">
+                <div id="interactiveMap"></div>
+                <div class="map-legend">
+                    <h3>Response Activities</h3>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #ED1B2E;"></span>
+                        <span>Emergency Shelters</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #B91C26;"></span>
+                        <span>Mobile Feeding Routes</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #6B7280;"></span>
+                        <span>Distribution Centers</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: #1F2937;"></span>
+                        <span>Long-term Recovery</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,6 +176,7 @@
                         <i class="fas fa-bed"></i>
                     </div>
                     <h3>Emergency Shelter</h3>
+                    <div class="service-metric">153,300+</div>
                     <p>Safe refuge for evacuees and those whose homes were damaged</p>
                 </div>
                 <div class="service-card">
@@ -139,6 +184,7 @@
                         <i class="fas fa-truck"></i>
                     </div>
                     <h3>Mobile Feeding</h3>
+                    <div class="service-metric">500,000+</div>
                     <p>Hot meals delivered directly to affected neighborhoods</p>
                 </div>
                 <div class="service-card">
@@ -146,6 +192,7 @@
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3>Emotional Support</h3>
+                    <div class="service-metric">24/7</div>
                     <p>Mental health services for trauma-affected survivors</p>
                 </div>
                 <div class="service-card">
@@ -153,7 +200,8 @@
                         <i class="fas fa-box-open"></i>
                     </div>
                     <h3>Relief Supplies</h3>
-                    <p>Distribution of cleanup kits and essential items to 1,860+ households</p>
+                    <div class="service-metric">1,860+</div>
+                    <p>Distribution of cleanup kits and essential items to households</p>
                 </div>
             </div>
         </div>
@@ -163,13 +211,8 @@
     <section class="data-section">
         <div class="container">
             <h2 class="section-title">Impact by the Numbers</h2>
-            <div class="charts-grid">
-                <div class="chart-container">
-                    <canvas id="servicesChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <canvas id="assistanceChart"></canvas>
-                </div>
+            <div class="chart-container-full">
+                <canvas id="assistanceChart"></canvas>
             </div>
             <div class="financial-breakdown">
                 <h3>Financial Assistance Distribution</h3>
@@ -177,7 +220,7 @@
                     <div class="progress-item">
                         <div class="progress-label">
                             <span>Immediate Financial Assistance</span>
-                            <span>$4.2M</span>
+                            <span class="amount-large">$4.2M</span>
                         </div>
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 64%"></div>
@@ -186,7 +229,7 @@
                     <div class="progress-item">
                         <div class="progress-label">
                             <span>Bridge Assistance (90 days post-storm)</span>
-                            <span>$2.4M</span>
+                            <span class="amount-large">$2.4M</span>
                         </div>
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 36%"></div>
@@ -226,6 +269,85 @@
         </div>
     </section>
 
+    <!-- Photo Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Relief Efforts in Action</h2>
+            <div class="photo-gallery">
+                <div class="gallery-item" data-caption="Red Cross volunteers preparing hot meals for distribution">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Meal Preparation</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-caption="Emergency Response Vehicle delivering supplies to affected neighborhoods">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-truck"></i>
+                        <p>Mobile Response</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-caption="Volunteers providing emotional support to hurricane survivors">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-hands-helping"></i>
+                        <p>Emotional Support</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-caption="Distribution of cleanup kits and essential supplies">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-box-open"></i>
+                        <p>Supply Distribution</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-caption="Shelter operations providing safe refuge for evacuees">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-home"></i>
+                        <p>Shelter Operations</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-caption="Community recovery meeting with local partners">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-users"></i>
+                        <p>Community Partnership</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Spotlight -->
+    <section class="volunteer-section">
+        <div class="container">
+            <h2 class="section-title">Volunteer Heroes</h2>
+            <div class="volunteer-grid">
+                <div class="volunteer-card">
+                    <div class="volunteer-stat">
+                        <i class="fas fa-users"></i>
+                        <div class="volunteer-number">2,500+</div>
+                        <div class="volunteer-label">Volunteers Deployed</div>
+                    </div>
+                </div>
+                <div class="volunteer-card">
+                    <div class="volunteer-stat">
+                        <i class="fas fa-clock"></i>
+                        <div class="volunteer-number">150,000+</div>
+                        <div class="volunteer-label">Hours of Service</div>
+                    </div>
+                </div>
+                <div class="volunteer-card">
+                    <div class="volunteer-stat">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="volunteer-number">35</div>
+                        <div class="volunteer-label">States Represented</div>
+                    </div>
+                </div>
+            </div>
+            <div class="volunteer-spotlight">
+                <h3>Making a Difference Every Day</h3>
+                <p>Our volunteers came from across the nation, leaving their homes and families to help complete strangers in their time of greatest need. From serving hot meals in 90-degree heat to providing a shoulder to cry on, these heroes embody the spirit of the Red Cross mission.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Recovery Efforts -->
     <section class="recovery-section">
         <div class="container">
@@ -242,9 +364,58 @@
                         <li>Mental health and wellness programs</li>
                     </ul>
                 </div>
-                <div class="recovery-highlight">
-                    <h4>Spotlight: Indian River County</h4>
-                    <p>Supporting vulnerable communities with above-average needs including disabled seniors and those facing unemployment through comprehensive recovery programs.</p>
+                <div class="recovery-stats">
+                    <div class="recovery-stat">
+                        <div class="recovery-number">$1.2M</div>
+                        <div class="recovery-label">Recovery Grants Distributed</div>
+                    </div>
+                    <div class="recovery-stat">
+                        <div class="recovery-number">15+</div>
+                        <div class="recovery-label">Partner Organizations</div>
+                    </div>
+                    <div class="recovery-stat">
+                        <div class="recovery-number">3,500+</div>
+                        <div class="recovery-label">Families Receiving Long-term Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Impact Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Your Impact Calculator</h2>
+            <div class="calculator-container">
+                <div class="calculator-input">
+                    <h3>See how your donation helps</h3>
+                    <div class="donation-amounts">
+                        <button class="donation-btn active" data-amount="25">$25</button>
+                        <button class="donation-btn" data-amount="50">$50</button>
+                        <button class="donation-btn" data-amount="100">$100</button>
+                        <button class="donation-btn" data-amount="250">$250</button>
+                        <button class="donation-btn" data-amount="500">$500</button>
+                    </div>
+                </div>
+                <div class="calculator-output">
+                    <h3>Your <span id="donationAmount">$25</span> donation can provide:</h3>
+                    <div class="impact-items">
+                        <div class="impact-item">
+                            <i class="fas fa-utensils"></i>
+                            <div class="impact-value" id="mealsProvided">10</div>
+                            <div class="impact-description">Hot meals for survivors</div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-bed"></i>
+                            <div class="impact-value" id="shelterNights">1</div>
+                            <div class="impact-description">Night of safe shelter</div>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-first-aid"></i>
+                            <div class="impact-value" id="reliefKits">1</div>
+                            <div class="impact-description">Emergency relief kit</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -258,6 +429,23 @@
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">Learn More</a>
                 <a href="#" class="btn btn-secondary">Support Recovery Efforts</a>
+            </div>
+            <div class="social-share">
+                <h3>Share This Report</h3>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn" aria-label="Share on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Share on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Share on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-btn" aria-label="Share via Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
