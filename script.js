@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const loadingScreen = document.getElementById('loadingScreen');
         if (loadingScreen) {
             loadingScreen.classList.add('hidden');
+            // Also set display none after transition
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500); // Wait for opacity transition to complete
         }
     }, 1500);
     
@@ -20,8 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize donation calculator
     initializeDonationCalculator();
     
-    // Initialize interactive map
-    initializeInteractiveMap();
+    // Map section removed
 });
 
 // Chart initialization
@@ -244,74 +247,6 @@ function animateValue(element, targetValue) {
     }, duration / steps);
 }
 
-// Initialize interactive map
-function initializeInteractiveMap() {
-    const mapContainer = document.getElementById('interactiveMap');
-    if (!mapContainer) return;
-    
-    // Add interactive overlay
-    const locations = [
-        { name: 'Tampa Bay', x: '20%', y: '45%', type: 'shelter' },
-        { name: 'Fort Myers', x: '30%', y: '65%', type: 'feeding' },
-        { name: 'Sarasota', x: '25%', y: '55%', type: 'distribution' },
-        { name: 'Orlando', x: '60%', y: '30%', type: 'recovery' }
-    ];
-    
-    locations.forEach(location => {
-        const marker = document.createElement('div');
-        marker.className = 'map-marker';
-        marker.style.left = location.x;
-        marker.style.top = location.y;
-        marker.dataset.type = location.type;
-        marker.title = location.name;
-        
-        const pulse = document.createElement('div');
-        pulse.className = 'marker-pulse';
-        marker.appendChild(pulse);
-        
-        mapContainer.appendChild(marker);
-    });
-    
-    // Add CSS for map markers
-    const style = document.createElement('style');
-    style.textContent = `
-        .map-marker {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: var(--red-cross-red);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 2;
-        }
-        
-        .marker-pulse {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30px;
-            height: 30px;
-            background: var(--red-cross-red);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                opacity: 0.6;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(2);
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
 
 // Smooth scroll functionality
 function initializeSmoothScroll() {
